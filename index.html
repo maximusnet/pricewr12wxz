@@ -5,15 +5,17 @@
   <title>Kaspi Test</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin: 0; padding: 0; background: #fff;">
+<body style="margin: 0; padding: 0; background: #fff; font-family: sans-serif;">
 
-<!-- Скрытая кнопка -->
+<h2 style="text-align:center; margin-top:40px;">Тест кнопки Kaspi</h2>
+
+<!-- Видимая кнопка Kaspi -->
 <div class="ks-widget"
      data-template="button"
      data-merchant-sku="103521901"
      data-merchant-code="1080012"
      data-city="750000000"
-     style="display: none;">
+     style="display: flex; justify-content: center; margin-top: 40px;">
 </div>
 
 <!-- Подключаем официальный скрипт -->
@@ -26,19 +28,6 @@
     var kjs = document.getElementsByTagName(s)[0];
     kjs.parentNode.insertBefore(js, kjs);
   })(document, 'script', 'KS-Widget');
-</script>
-
-<!-- Автоклик -->
-<script>
-  const tryClickKaspi = () => {
-    const btn = document.querySelector('.ks-button');
-    if (btn) {
-      btn.click();
-    } else {
-      setTimeout(tryClickKaspi, 500);
-    }
-  };
-  setTimeout(tryClickKaspi, 1500);
 </script>
 
 </body>
