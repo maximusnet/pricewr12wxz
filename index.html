@@ -26,17 +26,23 @@
     var js = d.createElement(s);
     js.id = id;
     js.src = 'https://kaspi.kz/kaspibutton/widget/ks-wi_ext.js';
-    var kjs = document.getElementsByTagName(s)[0];
+    var kjs = d.getElementsByTagName(s)[0];
     kjs.parentNode.insertBefore(js, kjs);
   })(document, 'script', 'KS-Widget');
 </script>
 
-<!-- Автоклик по кнопке через 1.5 секунды после загрузки страницы -->
+<!-- Автоклик или fallback-редирект через 1.5 секунды после загрузки -->
 <script>
   window.addEventListener('load', function () {
     setTimeout(function () {
-      const btn = document.querySelector('.ks-button');
-      if (btn) btn.click();
+      // Пытаемся найти и кликнуть кнопку виджета
+      const button = document.querySelector('.ks-button') || document.querySelector('.ks-widget a');
+      if (button) {
+        button.click();
+      } else {
+        // Фоллбек: прямой редирект на страницу продавца и товара
+        window.location.href = 'https://kaspi.kz/shop/info/merchant/1080012/address-tab/?merchantId=1080012&productCode=103521901&baseProductCode&tabId=PRODUCT&started_by=shop_product&ref=shared_link';
+      }
     }, 1500);
   });
 </script>
