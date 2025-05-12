@@ -16,32 +16,35 @@
      data-merchant-code="1080012"
      data-city="750000000"
      data-style="mobile"
-     style="display: flex; justify-content: center; margin-top: 40px;">
+     style="display: flex; justify-content: center; margin-top: 40px;"
+     id="ks-widget-container">
 </div>
 
 <!-- Подключаем официальный скрипт -->
 <script>
   (function(d, s, id) {
     if (d.getElementById(id)) return;
-    var js = d.createElement(s);
+    const js = d.createElement(s);
     js.id = id;
     js.src = 'https://kaspi.kz/kaspibutton/widget/ks-wi_ext.js';
-    var kjs = d.getElementsByTagName(s)[0];
-    kjs.parentNode.insertBefore(js, kjs);
+    const ref = d.getElementsByTagName(s)[0];
+    ref.parentNode.insertBefore(js, ref);
   })(document, 'script', 'KS-Widget');
 </script>
 
-<!-- Автоклик или fallback-редирект через 1.5 секунды после загрузки -->
+<!-- Автоклик через 1.5 секунды. Без fallback. -->
 <script>
-  window.addEventListener('load', function () {
-    setTimeout(function () {
-      // Пытаемся найти и кликнуть кнопку виджета
-      const button = document.querySelector('.ks-button') || document.querySelector('.ks-widget a');
-      if (button) {
-        button.click();
-      } else {
-        // Фоллбек: прямой редирект на страницу продавца и товара
-        
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      // Пытаемся получить ссылку из iframe и перенаправить
+      const iframe = document.querySelector('#ks-widget-container iframe');
+      if (iframe) {
+        // Вытаскиваем href из src-параметра 'url' виджета
+        const params = new URLSearchParams(iframe.src.split('?')[1]);
+        const encodedUrl = params.get('url');
+        if (encodedUrl) {
+          window.location.href = decodeURIComponent(encodedUrl);
+        }
       }
     }, 1500);
   });
