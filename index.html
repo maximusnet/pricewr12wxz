@@ -2,46 +2,17 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Kaspi Test</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body style="margin:0; padding:20px; font-family:sans-serif; background:#fff;">
-
-<h2 style="text-align:center; margin-bottom:30px;">Тест кнопки Kaspi</h2>
-
-<!-- Видимая кнопка Kaspi -->
-<div class="ks-widget"
-     data-template="button"
-     data-merchant-sku="103521901"
-     data-merchant-code="1080012"
-     data-city="750000000"
-     data-style="mobile"
-     style="display:flex; justify-content:center; margin-bottom:40px;">
-</div>
-
-<!-- Подключаем официальный скрипт виджета -->
-<script>
-  (function(d, s, id) {
-    if (d.getElementById(id)) return;
-    const js = d.createElement(s);
-    js.id = id;
-    js.src = 'https://kaspi.kz/kaspibutton/widget/ks-wi_ext.js';
-    const ref = d.getElementsByTagName(s)[0];
-    ref.parentNode.insertBefore(js, ref);
-  })(document, 'script', 'KS-Widget');
-</script>
-
-<!-- Автоклик: кликаем по кнопке виджета через 1.5 секунды -->
-<script>
-  window.addEventListener('load', function() {
+  <title>Kaspi Redirect Test</n   meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    window.addEventListener('load', function() {
+    // Автопереход через 1.5 секунды на рабочий deep link в приложении Kaspi
     setTimeout(function() {
-      const widgetBtn = document.querySelector('.ks-button');
-      if (widgetBtn) {
-        widgetBtn.click();
-      }
+    window.location.href = "https://kaspi.kz/shop/p/teplostar-nasos-otopitelja-avtonomnyi-14ts-10-tn10-12-v-103521901/?ksWidget=true&m=1080012&merchantID=1080012";
     }, 1500);
-  });
-</script>
-
-</body>
-</html>
+    });
+    </script>
+    </head>
+    <body style="margin:0; padding:0; display:flex; align-items:center; justify-content:center; height:100vh; font-family:sans-serif;">
+    <p>Переходим на приложение Kaspi...</p>
+    </body>
+    </html>
